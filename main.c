@@ -74,8 +74,8 @@ void Timer0ISR(void)
         		CLCD_void_SendCommand(CLCD_INIT_DisplayClear);
         		CLCD_void_SendStringData("Closing after:");
         	}
-        	if(TempWaitingTime%1000==0)
-            	LCD_CLosingCounter(((u8)(TempWaitingTime/1000))+48);//numbers in ASCII is between 48 & 57 --> 0 : 9
+        	if(TempWaitingTime%500==0)
+            	LCD_CLosingCounter(((u8)(TempWaitingTime/500))+48);//numbers in ASCII is between 48 & 57 --> 0 : 9
         }
         else
         {

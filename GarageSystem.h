@@ -14,7 +14,7 @@
 //-----------------------------------------------------------------
 #define TimeOut 0xff
 #define Waiting 0x00
-#define DefaultWaitingTime 3000//ms
+#define DefaultWaitingTime 1500//ms
 #define DefaultWaitingState Waiting
 #define PasswordMatches 1
 #define PasswordNotMatches 0

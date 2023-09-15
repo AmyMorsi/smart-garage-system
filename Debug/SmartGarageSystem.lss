@@ -5143,8 +5143,8 @@ void OpenGate(void){
     22fe:	81 e0       	ldi	r24, 0x01	; 1
     2300:	0e 94 4e 11 	call	0x229c	; 0x229c <SetGateState>
 		SetWaitingTime(DefaultWaitingTime);
-    2304:	88 eb       	ldi	r24, 0xB8	; 184
-    2306:	9b e0       	ldi	r25, 0x0B	; 11
+    2304:	8c ed       	ldi	r24, 0xDC	; 220
+    2306:	95 e0       	ldi	r25, 0x05	; 5
     2308:	0e 94 e4 10 	call	0x21c8	; 0x21c8 <SetWaitingTime>
 		SetWaitingTimeState(Waiting);
     230c:	80 e0       	ldi	r24, 0x00	; 0
@@ -5207,8 +5207,8 @@ void CloseGate(void){
     235c:	80 e0       	ldi	r24, 0x00	; 0
     235e:	0e 94 c5 10 	call	0x218a	; 0x218a <SetPasswordState>
 		SetWaitingTime(DefaultWaitingTime);
-    2362:	88 eb       	ldi	r24, 0xB8	; 184
-    2364:	9b e0       	ldi	r25, 0x0B	; 11
+    2362:	8c ed       	ldi	r24, 0xDC	; 220
+    2364:	95 e0       	ldi	r25, 0x05	; 5
     2366:	0e 94 e4 10 	call	0x21c8	; 0x21c8 <SetWaitingTime>
 		SetWaitingTimeState(DefaultWaitingState);
     236a:	80 e0       	ldi	r24, 0x00	; 0
@@ -8690,8 +8690,8 @@ void Timer0ISR(void)
         	if (TempWaitingTime==DefaultWaitingTime)
     3992:	80 91 49 02 	lds	r24, 0x0249
     3996:	90 91 4a 02 	lds	r25, 0x024A
-    399a:	2b e0       	ldi	r18, 0x0B	; 11
-    399c:	88 3b       	cpi	r24, 0xB8	; 184
+    399a:	25 e0       	ldi	r18, 0x05	; 5
+    399c:	8c 3d       	cpi	r24, 0xDC	; 220
     399e:	92 07       	cpc	r25, r18
     39a0:	39 f4       	brne	.+14     	; 0x39b0 <Timer0ISR+0x60>
         	{
@@ -8703,20 +8703,20 @@ void Timer0ISR(void)
     39aa:	91 e0       	ldi	r25, 0x01	; 1
     39ac:	0e 94 2e 07 	call	0xe5c	; 0xe5c <CLCD_void_SendStringData>
         	}
-        	if(TempWaitingTime%1000==0)
+        	if(TempWaitingTime%500==0)
     39b0:	80 91 49 02 	lds	r24, 0x0249
     39b4:	90 91 4a 02 	lds	r25, 0x024A
-    39b8:	28 ee       	ldi	r18, 0xE8	; 232
-    39ba:	33 e0       	ldi	r19, 0x03	; 3
+    39b8:	24 ef       	ldi	r18, 0xF4	; 244
+    39ba:	31 e0       	ldi	r19, 0x01	; 1
     39bc:	b9 01       	movw	r22, r18
     39be:	0e 94 27 1d 	call	0x3a4e	; 0x3a4e <__udivmodhi4>
     39c2:	00 97       	sbiw	r24, 0x00	; 0
     39c4:	89 f4       	brne	.+34     	; 0x39e8 <Timer0ISR+0x98>
-            	LCD_CLosingCounter(((u8)(TempWaitingTime/1000))+48);//numbers in ASCII is between 48 & 57 --> 0 : 9
+            	LCD_CLosingCounter(((u8)(TempWaitingTime/500))+48);//numbers in ASCII is between 48 & 57 --> 0 : 9
     39c6:	80 91 49 02 	lds	r24, 0x0249
     39ca:	90 91 4a 02 	lds	r25, 0x024A
-    39ce:	28 ee       	ldi	r18, 0xE8	; 232
-    39d0:	33 e0       	ldi	r19, 0x03	; 3
+    39ce:	24 ef       	ldi	r18, 0xF4	; 244
+    39d0:	31 e0       	ldi	r19, 0x01	; 1
     39d2:	b9 01       	movw	r22, r18
     39d4:	0e 94 27 1d 	call	0x3a4e	; 0x3a4e <__udivmodhi4>
     39d8:	cb 01       	movw	r24, r22
